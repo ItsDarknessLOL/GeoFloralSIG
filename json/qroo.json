@@ -1,0 +1,99 @@
+{
+  "estado": "Quintana Roo",
+  "capital": "Chetumal",
+  "color_tema": "#C62828",
+  "color_secundario": "#FFCDD2",
+  "total_especies": 312,
+  "especies_medicinales": 105,
+  "plantas": [
+    {
+      "id": "qro_001",
+      "nombre_comun": "Chaya Maya",
+      "nombre_cientifico": "Cnidoscolus aconitifolius",
+      "familia": "Euphorbiaceae",
+      "genero": "Cnidoscolus",
+      "especie": "aconitifolius",
+      "descripcion": "Arbusto perenne de hasta 3-5 metros de altura con hojas grandes palmadas y tallos que segregan un látex blanco. Considerada superalimento por su alto valor nutricional y medicinal.",
+      "altura": "3-5 metros",
+      "habitat": "Selvas tropicales húmedas, zonas de huertos familiares (solares)",
+      "distribucion": "Selva Maya en Quintana Roo, zonas de Felipe Carrillo Puerto, José María Morelos y Tulum",
+      "estado_conservacion": "Preocupación menor (LC)",
+      "abundancia": "Muy abundante",
+      "usos_medicinales": [
+        "Regulación de glucosa en sangre (diabetes)",
+        "Antiinflamatorio",
+        "Mejora de digestión",
+        "Fortalecimiento del sistema inmunológico",
+        "Reducción de colesterol",
+        "Tratamiento de anemia"
+      ],
+      "preparados": [
+        "Cocida como verdura (obligatoriamente hervida por 20 min)",
+        "Té de hojas frescas",
+        "Batido con jugo de naranja",
+        "Sopa de chaya con huevo"
+      ],
+      "componentes_activos": [
+        "Flavonoides",
+        "Taninos",
+        "Saponinas",
+        "Calcio (5 veces más que la leche)",
+        "Hierro (2 veces más que el espinaca)",
+        "Vitamina C y A"
+      ],
+      "contraindicaciones": "NUNCA consumir cruda (contiene cianuro). Debe hervirse mínimo 15-20 minutos. No exceder 5 hojas al día crudas.",
+      "biologia": {
+        "ciclo_vida": "Perenne",
+        "reproduccion": "Sexual (semillas) y asexual (esquejes de tallo)",
+        "polinizadores": "Abejas nativas, mariposas",
+        "epoca_floracion": "Todo el año (pico en época seca)",
+        "adaptaciones": "Látex como defensa contra herbívoros, raíces profundas para sequía"
+      },
+      "historia": {
+        "origen": "Nativa de la Península de Yucatán, cultivada desde 2000 años antes de Cristo",
+        "usos_tradicionales": "Base de la alimentación maya, llamada 'árbol de espinaca'. Usada para curar anemia y debilidad",
+        "menciones_historicas": "Documentada por fray Diego de Landa en Relación de las Cosas de Yucatán",
+        "evidencia_arqueologica": "Representada en cerámica clásica maya"
+      },
+      "economia": {
+        "precio_mercado_kg": "$35-50 MXN (hojas frescas)",
+        "produccion_anual_ton": "1,200",
+        "mercados_destino": "Cancún, Playa del Carmen, Chetumal, Cozumel",
+        "valor_exportacion": "$450K USD anuales",
+        "empleos_generados": "~3,500 familias en cultivo familiar",
+        "productos_derivados": [
+          "Hojas frescas",
+          "Polvo deshidratado",
+          "Cápsulas",
+          "Extracto líquido",
+          "Cremas cosméticas"
+        ]
+      },
+      "sig": {
+        "coordenadas": {
+          "lat": 19.58,
+          "lng": -88.045
+        },
+        "zona_distribucion": "Zona Maya de Quintana Roo",
+        "tipo_suelo": "Suelos rojos y arcillosos tropicales",
+        "clima": "Cálido húmedo",
+        "precipitacion_anual": "1200-1500 mm",
+        "altitud": "10-50 msnm"
+      },
+      "humanidades": {
+        "significado_cultural": "Planta sagrada maya, símbolo de nutrición y salud. Considerada el 'árbol de la vida'",
+        "relevancia_social": "Pilar de la seguridad alimentaria en comunidades mayas rurales",
+        "practicas_tradicionales": "Cultivada en todo solar maya, conocimiento de cocción transmitido de madres a hijas",
+        "saberes_indigenas": "Los h-men la prescriben para 'limpiar la sangre'"
+      },
+      "imagenes": {
+        "principal": "assets/imagenes/chaya_maya.jpg",
+        "habitat": "assets/imagenes/chaya_habitat.jpg",
+        "detalle": "assets/imagenes/chaya_detalle.jpg"
+      },
+      "populares": true,
+      "mas_vendida": true,
+      "fecha_registro": "2024-02-20"
+    }
+  ]
+}

@@ -1,0 +1,506 @@
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+/* --- Aurora Boreal --- */
+@keyframes aurora-flow {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(10deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes aurora-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  50% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* --- Entradas --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Animaciones aplicables con clase --- */
+.anim-fadeInUp {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.anim-fadeInDown {
+  animation: fadeInDown 0.8s ease forwards;
+  opacity: 0;
+}
+
+.anim-fadeInLeft {
+  animation: fadeInLeft 0.8s ease forwards;
+  opacity: 0;
+}
+
+.anim-fadeInRight {
+  animation: fadeInRight 0.8s ease forwards;
+  opacity: 0;
+}
+
+.anim-fadeIn {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+.anim-scaleIn {
+  animation: scaleIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+/* Delays */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+.delay-8 { animation-delay: 0.8s; }
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- Floating --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* --- Pulse --- */
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4);
+  }
+  50% { 
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 10px rgba(46, 125, 50, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* --- Rotación --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 10s linear infinite;
+}
+
+/* --- Bounce --- */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+/* --- Slide In --- */
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- Loading Skeleton --- */
+@keyframes skeleton {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton 1.5s infinite;
+}
+
+/* --- Glassmorphism --- */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--borde-radio);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--borde-radio);
+}
+
+/* --- Card Hover Effects --- */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* --- Tooltip --- */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  padding: 6px 12px;
+  background: var(--negro);
+  color: var(--blanco);
+  font-size: 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* --- Gradient border --- */
+.gradient-border {
+  position: relative;
+  background: var(--blanco);
+  border-radius: var(--borde-radio-lg);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--color-estado), var(--verde-lima));
+  border-radius: calc(var(--borde-radio-lg) + 2px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* --- Progress bar animation --- */
+@keyframes progressFill {
+  from { width: 0%; }
+}
+
+.progress-animated {
+  animation: progressFill 1.5s ease forwards;
+}
+
+/* --- Mapa controls --- */
+.mapa-ctrl-bloqueado {
+  position: relative;
+}
+
+.mapa-ctrl-bloqueado::after {
+  content: 'Presiona Ctrl + clic para mover el mapa';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 24px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mapa-ctrl-bloqueado:hover::after {
+  opacity: 1;
+}
+
+/* --- Scrollbar custom --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gris-claro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-estado);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--verde-oscuro);
+}
+
+/* --- Catálogo filtros decorativos --- */
+.decoracion-estado {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80px;
+  height: 300px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.decoracion-estado.visible {
+  opacity: 0.25;
+}
+
+.decoracion-estado img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* --- Botón móvil mapa --- */
+.btn-mapa-movil {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 14px 20px;
+  background: var(--color-estado);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .btn-mapa-movil {
+    display: inline-flex;
+  }
+}
+
+/* --- Loading spinner --- */
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--gris-claro);
+  border-top-color: var(--color-estado);
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+}
+
+/* --- Glass cards --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--borde-radio-lg);
+  padding: 30px;
+  transition: var(--transicion-suave);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* --- Tabla comparativa --- */
+.tabla-comparativa {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--borde-radio);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+}
+
+.tabla-comparativa th {
+  background: var(--color-estado);
+  color: var(--blanco);
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.tabla-comparativa td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.tabla-comparativa tr:nth-child(even) {
+  background: var(--color-estado-muy-claro);
+}
+
+.tabla-comparativa tr:hover {
+  background: rgba(46, 125, 50, 0.05);
+}

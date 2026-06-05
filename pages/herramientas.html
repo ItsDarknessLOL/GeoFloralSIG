@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herramientas - Plantas Medicinales del Sureste</title>
+  <meta name="description" content="Herramientas especializadas para explorar plantas medicinales del sureste.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    
+    /* Hero herramientas */
+    .hero-herramientas {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #1a5e3a 100%);
+      color: var(--blanco);
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-herramientas::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .hero-herramientas h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    
+    .hero-herramientas p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    
+    /* Grid de herramientas */
+    .herramientas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+      max-width: var(--contenedor-max);
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    
+    /* Tarjeta de herramienta */
+    .herramienta-card {
+      background: var(--blanco);
+      border-radius: var(--borde-radio-lg);
+      box-shadow: var(--sombra-suave);
+      overflow: hidden;
+      transition: var(--transicion-suave);
+    }
+    
+    .herramienta-card:hover {
+      box-shadow: var(--sombra-fuerte);
+      transform: translateY(-4px);
+    }
+    
+    .herramienta-header {
+      padding: 24px 24px 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .herramienta-icono {
+      width: 48px;
+      height: 48px;
+      background: var(--color-estado-muy-claro);
+      border-radius: var(--borde-radio);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .herramienta-header h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--negro);
+    }
+    
+    .herramienta-body {
+      padding: 20px 24px 24px;
+    }
+    
+    /* Buscador */
+    .search-herramienta {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--borde-radio);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      transition: var(--transicion-suave);
+    }
+    
+    .search-herramienta:focus {
+      outline: none;
+      border-color: var(--color-estado);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    }
+    
+    /* Resultados */
+    .resultados-herramienta {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    
+    .resultado-item {
+      padding: 12px;
+      border-radius: var(--borde-radio);
+      background: var(--gris-claro);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: var(--transicion-suave);
+    }
+    
+    .resultado-item:hover {
+      background: var(--color-estado-muy-claro);
+    }
+    
+    .resultado-item h4 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    
+    .resultado-item p {
+      font-size: 0.8rem;
+      color: var(--gris-medio);
+      margin: 0;
+    }
+    
+    /* Comparador */
+    .comparador-selects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .comparador-selects select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--borde-radio);
+      font-size: 0.9rem;
+    }
+    
+    /* Mapa mini */
+    .mapa-mini {
+      height: 250px;
+      border-radius: var(--borde-radio);
+      margin-bottom: 12px;
+    }
+    
+    /* Coordenadas */
+    .coord-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    
+    .coord-inputs input {
+      padding: 10px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--borde-radio);
+      font-size: 0.9rem;
+    }
+    
+    .coord-resultado {
+      padding: 12px;
+      background: var(--color-estado-muy-claro);
+      border-radius: var(--borde-radio);
+      font-size: 0.9rem;
+      font-family: monospace;
+    }
+    
+    /* Ficha */
+    .ficha-preview {
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--borde-radio);
+      padding: 16px;
+      margin-bottom: 12px;
+      background: var(--gris-claro);
+    }
+    
+    /* Identificador */
+    .upload-zone {
+      border: 2px dashed rgba(0,0,0,0.15);
+      border-radius: var(--borde-radio);
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transicion-suave);
+      margin-bottom: 16px;
+    }
+    
+    .upload-zone:hover {
+      border-color: var(--color-estado);
+      background: var(--color-estado-muy-claro);
+    }
+    
+    .upload-zone input {
+      display: none;
+    }
+    
+    .preview-imagen {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: var(--borde-radio);
+      margin-bottom: 12px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .herramientas-grid {
+        grid-template-columns: 1fr;
+        padding: 20px 16px;
+      }
+      
+      .comparador-selects,
+      .coord-inputs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="contenedor">
+      <a href="../index.html" class="logo">
+        <div class="logo-icono">🌿</div>
+        <span>Plantas Medicinales del Sureste</span>
+      </a>
+      
+      <nav class="nav">
+        <a href="../index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="herramientas.html" class="activo">Herramientas</a>
+        <a href="acerca_de.html">Acerca de</a>
+      </nav>
+      
+      <button class="menu-toggle" aria-label="Menú">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-herramientas">
+    <div style="position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 24px;">
+      <h1 class="font-display anim-fadeInUp">🛠️ Herramientas</h1>
+      <p class="anim-fadeInUp delay-1">
+        Utilidades especializadas para investigadores, estudiantes y entusiastas de las plantas medicinales.
+      </p>
+      <a href="#herramientas" class="btn-principal anim-fadeInUp delay-2" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);">
+        Explorar Herramientas ↓
+      </a>
+    </div>
+  </section>
+
+  <!-- Herramientas -->
+  <section id="herramientas">
+    <div class="herramientas-grid">
+      
+      <!-- 1. Buscador de Especies -->
+      <div class="herramienta-card reveal">
+        <div class="herramienta-header">
+          <div class="herramienta-icono">🔍</div>
+          <h3>Buscador de Especies</h3>
+        </div>
+        <div class="herramienta-body">
+          <input type="text" class="search-herramienta" id="buscadorEspecies" placeholder="Nombre común, científico o uso medicinal..." oninput="buscarEspecies(this.value)">
+          <div class="resultados-herramienta" id="resultadosBuscador"></div>
+        </div>
+      </div>
+      
+      <!-- 2. Localizador de Especies -->
+      <div class="herramienta-card reveal delay-1">
+        <div class="herramienta-header">
+          <div class="herramienta-icono">📍</div>
+          <h3>Localizador de Especies</h3>
+        </div>
+        <div class="herramienta-body">
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">Estado</label>
+            <select id="locEstado" onchange="cargarMunicipios()" style="width: 100%; padding: 10px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
+              <option value="">Seleccionar estado</option>
+              <option value="yucatan">Yucatán</option>
+              <option value="qroo">Quintana Roo</option>
+              <option value="campeche">Campeche</option>
+              <option value="chiapas">Chiapas</option>
+              <option value="tabasco">Tabasco</option>
+              <option value="veracruz">Veracruz</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">Municipio</label>
+            <select id="locMunicipio" style="width: 100%; padding: 10px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
+              <option value="">Todos los municipios</option>
+            </select>
+          </div>
+          <button class="btn-principal" style="width: 100%;" onclick="localizarEspecies()">🔍 Buscar Especies</button>
+          <div class="resultados-herramienta" id="resultadosLocalizador" style="margin-top: 12px;"></div>
+        </div>
+      </div>
+      
+      <!-- 3. Comparador de Especies -->
+      <div class="herramienta-card reveal delay-2">
+        <div class="herramienta-header">
+          <div class="herramienta-icono">⚖️</div>
+          <h3>Comparador de Especies</h3>
+        </div>
+        <div class="herramienta-body">
+          <div class="comparador-selects">
+            <select id="compEspecie1" onchange="compararEspecies()">
+              <option value="">Especie 1</option>
+            </select>
+            <select id="compEspecie2" onchange="compararEspecies()">
+              <option value="">Especie 2</option>
+            </select>
+          </div>
+          <div id="tablaComparacion"></div>
+        </div>
+      </div>
+      
+      <!-- 4. Calculadora SIG -->
+      <div class="herramienta-card reveal">
+        <div class="herramienta-header">
+          <div class="herramienta-icono">📏</div>
+          <h3>Calculadora SIG</h3>
+        </div>
+        <div class="herramienta-body">
+          <div id="mapaCalculadora" class="mapa-mini"></div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-principal" style="padding: 8px 16px; font-size: 0.85rem;" onclick="activarMedicion('distancia')">
+              📏 Distancia
+            </button>
+            <button class="btn-principal" style="padding: 8px 16px; font-size: 0.85rem;" onclick="activarMedicion('area')">
+              ⬡ Área
+            </button>
+            <button class="btn-principal" style="padding: 8px 16px; font-size: 0.85rem;" onclick="activarDibujo()">
+              ✏️ Dibujar
+            </button>
+            <button class="btn-secundario" style="padding: 8px 16px; font-size: 0.85rem;" onclick="limpiarMediciones()">
+              🗑️ Limpiar
+            </button>
+          </div>
+          <div id="resultadoMedicion" style="margin-top: 12px; font-size: 0.9rem;"></div>
+        </div>
+      </div>
+      
+      <!-- 5. Conversor de Coordenadas -->
+      <div class="herramienta-card reveal delay-1">
+        <div class="herramienta-header">
+          <div class="herramienta-icono">🌐</div>
+          <h3>Conversor de Coordenadas</h3>
+        </div>
+        <div class="herramienta-body">
+          <label style="font-size: 0.85rem; font-weight: 600;">Latitud, Longitud (WGS84)</label>
+          <div class="coord-inputs">
+            <input type="number" id="convLat" placeholder="Latitud (ej: 19.43)" step="0.0001" oninput="convertirCoordenadas()">
+            <input type="number" id="convLng" placeholder="Longitud (ej: -96.95)" step="0.0001" oninput="convertirCoordenadas()">
+          </div>
+          <div class="coord-resultado" id="resultadoUTM" style="margin-bottom: 12px;">
+            UTM: Ingresa coordenadas...
+          </div>
+          <label style="font-size: 0.85rem; font-weight: 600;">UTM → Lat/Lng</label>
+          <div class="coord-inputs">
+            <input type="number" id="utmX" placeholder="X (Este)" step="0.01" oninput="convertirUTM()">
+            <input type="number" id="utmY" placeholder="Y (Norte)" step="0.01" oninput="convertirUTM()">
+          </div>
+          <div class="coord-resultado" id="resultadoLatLng">
+            Lat/Lng: Ingresa coordenadas UTM...
+          </div>
+          <p style="font-size: 0.75rem; color: var(--gris-medio); margin-top: 8px;">
+            Zona UTM: 15N (México centro-este) · 16N (Península)
+          </p>
+        </div>
+      </div>
+      
+      <!-- 6. Generador de Fichas -->
+      <div class="herramienta-card reveal delay-2">
+        <div class="herramienta-header">
+          <div class="herramienta-icono">📄</div>
+          <h3>Generador de Fichas</h3>
+        </div>
+        <div class="herramienta-body">
+          <select id="fichaPlanta" onchange="generarVistaPreviaFicha()" style="width: 100%; padding: 10px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; margin-bottom: 12px;">
+            <option value="">Seleccionar planta</option>
+          </select>
+          <div class="ficha-preview" id="fichaPreview" style="display: none;">
+            <div id="fichaContenido"></div>
+          </div>
+          <button class="btn-principal" style="width: 100%; margin-top: 8px;" onclick="descargarFichaPDF()">
+            ⬇️ Descargar Ficha PDF
+          </button>
+        </div>
+      </div>
+      
+      <!-- 7. Identificador de Plantas (Demo) -->
+      <div class="herramienta-card reveal">
+        <div class="herramienta-header">
+          <div class="herramienta-icono">📷</div>
+          <h3>Identificador de Plantas (Demo)</h3>
+        </div>
+        <div class="herramienta-body">
+          <div class="upload-zone" onclick="document.getElementById('uploadFoto').click()">
+            <input type="file" id="uploadFoto" accept="image/*" onchange="procesarImagen(event)">
+            <div style="font-size: 3rem; margin-bottom: 8px;">📤</div>
+            <p style="margin: 0; font-size: 0.9rem; color: var(--gris-medio);">
+              Sube una foto de la planta<br>
+              <small>(Interfaz demo - sin IA real)</small>
+            </p>
+          </div>
+          <div id="identificadorResultado" style="display: none;">
+            <img id="previewImagen" class="preview-imagen" style="display: none;">
+            <div id="identificadorSimulado" style="padding: 12px; background: var(--color-estado-muy-claro); border-radius: 8px;">
+              <p style="margin: 0; font-size: 0.9rem;">🔬 Analizando imagen...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 8. Estadísticas Rápidas -->
+      <div class="herramienta-card reveal delay-1">
+        <div class="herramienta-header">
+          <div class="herramienta-icono">📊</div>
+          <h3>Estadísticas Rápidas</h3>
+        </div>
+        <div class="herramienta-body">
+          <div id="estadisticasRapidas" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="text-align: center; padding: 16px; background: var(--gris-claro); border-radius: 8px;">
+              <div style="font-size: 2rem; font-weight: 800; color: var(--color-estado);">6</div>
+              <div style="font-size: 0.8rem; color: var(--gris-medio);">Estados</div>
+            </div>
+            <div style="text-align: center; padding: 16px; background: var(--gris-claro); border-radius: 8px;">
+              <div style="font-size: 2rem; font-weight: 800; color: var(--color-estado);">791</div>
+              <div style="font-size: 0.8rem; color: var(--gris-medio);">Especies Medicinales</div>
+            </div>
+            <div style="text-align: center; padding: 16px; background: var(--gris-claro); border-radius: 8px;">
+              <div style="font-size: 2rem; font-weight: 800; color: var(--color-estado);">89</div>
+              <div style="font-size: 0.8rem; color: var(--gris-medio);">Familias</div>
+            </div>
+            <div style="text-align: center; padding: 16px; background: var(--gris-claro); border-radius: 8px;">
+              <div style="font-size: 2rem; font-weight: 800; color: var(--color-estado);">15K</div>
+              <div style="font-size: 0.8rem; color: var(--gris-medio);">Familias Beneficiadas</div>
+            </div>
+          </div>
+          <div id="graficaUsos" style="margin-top: 16px; height: 150px;"></div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid" style="grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 24px;">
+      <div>
+        <div class="footer-logo"><span>🌿</span> Plantas Medicinales del Sureste</div>
+        <p class="footer-desc">Herramientas para la investigación y preservación.</p>
+      </div>
+      <div style="text-align: right;">
+        <div class="footer-links">
+          <a href="../index.html">Inicio</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="mapa.html">Mapa</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p> 2024 Plantas Medicinales del Sureste</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/herramientas.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "estado": "Campeche",
+  "capital": "San Francisco de Campeche",
+  "color_tema": "#1565C0",
+  "color_secundario": "#BBDEFB",
+  "total_especies": 289,
+  "especies_medicinales": 97,
+  "plantas": [
+    {
+      "id": "cam_001",
+      "nombre_comun": "Orejuela de Lagarto",
+      "nombre_cientifico": "Kalanchoe pinnata",
+      "familia": "Crassulaceae",
+      "genero": "Kalanchoe",
+      "especie": "pinnata",
+      "descripcion": "Planta suculenta de hasta 1-1.5 metros con hojas opuestas, carnosas y dentadas en los bordes. Produce plantículas en los márgenes de las hojas. Flores colgantes de color verde-rosado.",
+      "altura": "1-1.5 metros",
+      "habitat": "Selvas tropicales caducifolias, zonas perturbadas, márgenes de caminos",
+      "distribucion": "Región de los Chenes y Calakmul en Campeche",
+      "estado_conservacion": "Preocupación menor (LC)",
+      "abundancia": "Abundante",
+      "usos_medicinales": [
+        "Tratamiento de cáncer (estudios preliminares)",
+        "Antiinflamatorio",
+        "Cicatrizante",
+        "Antihipertensivo",
+        "Tratamiento de dolores reumáticos"
+      ],
+      "preparados": [
+        "Infusión de hojas frescas",
+        "Cataplasma machacado sobre heridas",
+        "Jarabe con miel para tos",
+        "Té combinado con canela para presión"
+      ],
+      "componentes_activos": [
+        "Bufadienólidos",
+        "Flavonoides",
+        "Taninos",
+        "Ácidos orgánicos",
+        "Alcaloides"
+      ],
+      "contraindicaciones": "No usar durante el embarazo o lactancia. Consultar médico si se toman antihipertensivos.",
+      "biologia": {
+        "ciclo_vida": "Perenne",
+        "reproduccion": "Asexual predominante (plantículas en hojas) y sexual",
+        "polinizadores": "Colibríes, abejas",
+        "epoca_floracion": "Noviembre-Marzo",
+        "adaptaciones": "Reproducción vegetativa rápida mediante plantículas"
+      },
+      "historia": {
+        "origen": "Introducida en Campeche durante el siglo XVI, naturalizada ampliamente",
+        "usos_tradicionales": "Usada por los ch'oles para curar inflamaciones y heridas",
+        "menciones_historicas": "Documentada en la etnobotánica de la Sierra de Chamá",
+        "evidencia_arqueologica": "Registros etnobotánicos del siglo XIX"
+      },
+      "economia": {
+        "precio_mercado_kg": "$60-90 MXN",
+        "produccion_anual_ton": "180",
+        "mercados_destino": "Campeche, Mérida, Villahermosa",
+        "valor_exportacion": "$120K USD anuales",
+        "empleos_generados": "~400 personas",
+        "productos_derivados": [
+          "Extractos herbales",
+          "Cápsulas",
+          "Ungüentos",
+          "Jarabe"
+        ]
+      },
+      "sig": {
+        "coordenadas": {
+          "lat": 19.83,
+          "lng": -90.535
+        },
+        "zona_distribucion": "Centro y sur de Campeche",
+        "tipo_suelo": "Suelos rojos y karsticos",
+        "clima": "Cálido subhúmedo con lluvias en verano",
+        "precipitacion_anual": "900-1300 mm",
+        "altitud": "10-100 msnm"
+      },
+      "humanidades": {
+        "significado_cultural": "Conocida como 'hoja milagrosa' en comunidades ch'ol",
+        "relevancia_social": "Base de medicina tradicional familiar",
+        "practicas_tradicionales": "Se cuelga en puertas como protección",
+        "saberes_indigenas": "Usada por parteras para tratamientos postparto"
+      },
+      "imagenes": {
+        "principal": "assets/imagenes/orejuela.jpg",
+        "habitat": "assets/imagenes/orejuela_habitat.jpg",
+        "detalle": "assets/imagenes/orejuela_detalle.jpg"
+      },
+      "populares": true,
+      "mas_vendida": false,
+      "fecha_registro": "2024-03-10"
+    }
+  ]
+}

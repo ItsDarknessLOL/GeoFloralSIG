@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acerca de - Plantas Medicinales del Sureste</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    
+    /* Hero */
+    .hero-acerca {
+      background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 30%, #388E3C 60%, #1a1a2e 100%);
+      color: white;
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-acerca h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    
+    .hero-acerca p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Sección sobre nosotros */
+    .sobre-nosotros {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .sobre-nosotros h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .sobre-nosotros p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--gris-oscuro);
+      margin-bottom: 16px;
+    }
+    
+    /* Disciplinas */
+    .disciplinas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .disciplina-card {
+      padding: 24px;
+      background: var(--gris-claro);
+      border-radius: var(--borde-radio);
+      text-align: center;
+      transition: var(--transicion-suave);
+    }
+    
+    .disciplina-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra-suave);
+    }
+    
+    .disciplina-icono {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+    
+    .disciplina-card h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    
+    .disciplina-card p {
+      font-size: 0.85rem;
+      color: var(--gris-medio);
+      margin: 0;
+    }
+    
+    /* Contacto */
+    .contacto-section {
+      background: var(--gris-claro);
+      padding: 80px 24px;
+    }
+    
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: var(--contenedor-max);
+      margin: 0 auto;
+    }
+    
+    .contacto-info h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    
+    .contacto-info p {
+      font-size: 1rem;
+      color: var(--gris-oscuro);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    
+    .contacto-datos {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .contacto-dato {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+    
+    .contacto-dato-icono {
+      width: 40px;
+      height: 40px;
+      background: var(--color-estado-muy-claro);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    
+    /* Formulario */
+    .formulario-contacto {
+      background: var(--blanco);
+      padding: 40px;
+      border-radius: var(--borde-radio-lg);
+      box-shadow: var(--sombra-suave);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--gris-oscuro);
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--borde-radio);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: var(--transicion-suave);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--color-estado);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    }
+    
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .btn-enviar {
+      width: 100%;
+      padding: 14px;
+      background: var(--color-estado);
+      color: white;
+      border: none;
+      border-radius: var(--borde-radio);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transicion-suave);
+    }
+    
+    .btn-enviar:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+    
+    /* Mapa de contacto */
+    .mapa-contacto {
+      height: 250px;
+      border-radius: var(--borde-radio);
+      margin-top: 16px;
+      overflow: hidden;
+    }
+    
+    @media (max-width: 768px) {
+      .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .formulario-contacto {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="contenedor">
+      <a href="../index.html" class="logo">
+        <div class="logo-icono">🌿</div>
+        <span>Plantas Medicinales del Sureste</span>
+      </a>
+      
+      <nav class="nav">
+        <a href="../index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="herramientas.html">Herramientas</a>
+        <a href="acerca_de.html" class="activo">Acerca de</a>
+      </nav>
+      
+      <button class="menu-toggle" aria-label="Menú">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-acerca">
+    <h1 class="font-display anim-fadeInUp">Acerca del Proyecto</h1>
+    <p class="anim-fadeInUp delay-1">
+      Un esfuerzo multidisciplinario para documentar y preservar el conocimiento sobre las plantas medicinales del sureste mexicano.
+    </p>
+  </section>
+
+  <!-- Sobre Nosotros -->
+  <section class="sobre-nosotros">
+    <h2 class="font-display reveal">Nuestra Misión</h2>
+    <p class="reveal">
+      Este proyecto nace de la necesidad de preservar y difundir el invaluable conocimiento sobre las plantas medicinales endémicas de los estados de Yucatán, Quintana Roo, Campeche, Chiapas, Tabasco y Veracruz. Nuestra plataforma integra saberes ancestrales con herramientas científicas modernas para crear un recurso accesible y completo.
+    </p>
+    <p class="reveal">
+      A través de la colaboración entre diversas disciplinas —biología, sistemas de información geográfica, humanidades, historia y economía— hemos construido una base de datos que no solo documenta las propiedades medicinales de estas especies, sino que también registra su importancia cultural, económica y ecológica.
+    </p>
+    <p class="reveal">
+      Creemos firmemente que la conservación de este conocimiento es fundamental para las comunidades locales y para la ciencia médica del futuro. Cada planta documentada representa siglos de observación, experimentación y transmisión oral que merecen ser preservados para las generaciones venideras.
+    </p>
+    
+    <div class="disciplinas-grid reveal">
+      <div class="disciplina-card">
+        <div class="disciplina-icono">🗺️</div>
+        <h4>SIG</h4>
+        <p>Información geoespacial de distribución y abundancia</p>
+      </div>
+      <div class="disciplina-card">
+        <div class="disciplina-icono">🔬</div>
+        <h4>Biología</h4>
+        <p>Taxonomía, morfología y ecología de las especies</p>
+      </div>
+      <div class="disciplina-card">
+        <div class="disciplina-icono">🎭</div>
+        <h4>Humanidades</h4>
+        <p>Significado cultural y prácticas tradicionales</p>
+      </div>
+      <div class="disciplina-card">
+        <div class="disciplina-icono">📜</div>
+        <h4>Historia</h4>
+        <p>Usos ancestrales y evidencia arqueológica</p>
+      </div>
+      <div class="disciplina-card">
+        <div class="disciplina-icono">💰</div>
+        <h4>Economía</h4>
+        <p>Valor comercial e impacto en comunidades</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contacto-section" id="contacto">
+    <div class="contacto-grid">
+      <div class="contacto-info reveal">
+        <h2 class="font-display">Contacto</h2>
+        <p>
+          ¿Tienes información sobre plantas medicinales que quieras compartir? ¿Encontraste un error? 
+          ¿Te gustaría colaborar con el proyecto? Escríbenos.
+        </p>
+        
+        <div class="contacto-datos">
+          <div class="contacto-dato">
+            <div class="contacto-dato-icono">📧</div>
+            <span>info@plantasmx.com</span>
+          </div>
+          <div class="contacto-dato">
+            <div class="contacto-dato-icono">📍</div>
+            <span>Mérida, Yucatán, México</span>
+          </div>
+          <div class="contacto-dato">
+            <div class="contacto-dato-icono">🌐</div>
+            <span>plantasmx.com</span>
+          </div>
+        </div>
+        
+        <div class="mapa-contacto" id="mapaContacto"></div>
+      </div>
+      
+      <div class="formulario-contacto reveal delay-1">
+        <h3 style="margin-bottom: 20px; font-size: 1.25rem;">Envíanos un mensaje</h3>
+        <form id="formContacto" onsubmit="enviarCorreo(event)">
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Correo electrónico *</label>
+            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="asunto">Asunto *</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Selecciona un asunto</option>
+              <option value="colaboracion">Colaboración</option>
+              <option value="correccion">Corrección de información</option>
+              <option value="sugerencia">Sugerencia</option>
+              <option value="consulta">Consulta general</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" required placeholder="Escribe tu mensaje aquí..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn-enviar" id="btnEnviar">
+            <span id="btnTexto">📨 Enviar Mensaje</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid" style="grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 24px;">
+      <div>
+        <div class="footer-logo"><span>🌿</span> Plantas Medicinales del Sureste</div>
+        <p class="footer-desc">Preservando el conocimiento medicinal ancestral.</p>
+      </div>
+      <div style="text-align: right;">
+        <div class="footer-links">
+          <a href="../index.html">Inicio</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="mapa.html">Mapa</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p> 2024 Plantas Medicinales del Sureste · Proyecto de código abierto</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/acerca_de.js"></script>
+</body>
+</html>

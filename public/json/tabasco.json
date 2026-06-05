@@ -1,0 +1,98 @@
+{
+  "estado": "Tabasco",
+  "capital": "Villahermosa",
+  "color_tema": "#E65100",
+  "color_secundario": "#FFCC80",
+  "total_especies": 378,
+  "especies_medicinales": 134,
+  "plantas": [
+    {
+      "id": "tab_001",
+      "nombre_comun": "Hierba de Tabasco",
+      "nombre_cientifico": "Piper auritum",
+      "familia": "Piperaceae",
+      "genero": "Piper",
+      "especie": "auritum",
+      "descripcion": "Arbusto herbáceo de 1-3 metros con hojas grandes en forma de corazón, de color verde brillante y aromáticas. Tallos huecos y nudosos. Inflorescencia en espiga cilíndrica.",
+      "altura": "1-3 metros",
+      "habitat": "Selvas tropicales perennifolias, orillas de ríos, áreas húmedas",
+      "distribucion": "Centro y sur de Tabasco, cuenca del río Usumacinta",
+      "estado_conservacion": "Preocupación menor (LC)",
+      "abundancia": "Muy abundante",
+      "usos_medicinales": [
+        "Digestivo y carminativo",
+        "Tratamiento de dolores de estómago",
+        "Antiinflamatorio",
+        "Analgésico suave",
+        "Antiespasmódico",
+        "Tratamiento de cólicos"
+      ],
+      "preparados": [
+        "Hojas envueltas en tamales (mamé)",
+        "Té de hojas frescas",
+        "Cataplasma para dolores musculares",
+        "Baño de vapor con hojas"
+      ],
+      "componentes_activos": [
+        "Safrol",
+        "Eugenol",
+        "Apiol",
+        "Flavonoides",
+        "Aceites esenciales (0.3-0.8%)"
+      ],
+      "contraindicaciones": "No consumir en exceso por contenido de safrol. Evitar durante el embarazo.",
+      "biologia": {
+        "ciclo_vida": "Perenne",
+        "reproduccion": "Sexual (semillas en espigas) y vegetativa (estolones)",
+        "polinizadores": "Insectos pequeños, moscas",
+        "epoca_floracion": "Todo el año",
+        "adaptaciones": "Tallos huecos para flotación en zonas inundables, raíces adventicias"
+      },
+      "historia": {
+        "origen": "Nativa del sureste de México, domesticada por pueblos olmecas y mayas",
+        "usos_tradicionales": "Base de la gastronomía tabasqueña ('mamé'). Usada para curar malestares estomacales",
+        "menciones_historicas": "Códice Florentino menciona su uso como envoltura de alimentos medicinales",
+        "evidencia_arqueologica": "Semillas preservadas en sitios arqueológicos de La Venta"
+      },
+      "economia": {
+        "precio_mercado_kg": "$25-40 MXN (hojas frescas)",
+        "produccion_anual_ton": "2,500",
+        "mercados_destino": "Villahermosa, Coatzacoalcos, Minatitlán, CDMX",
+        "valor_exportacion": "$180K USD anuales",
+        "empleos_generados": "~5,000 productores",
+        "productos_derivados": [
+          "Hojas frescas",
+          "Condimento seco",
+          "Aceite esencial",
+          "Extracto aromático",
+          "Té medicinal"
+        ]
+      },
+      "sig": {
+        "coordenadas": {
+          "lat": 17.989,
+          "lng": -92.947
+        },
+        "zona_distribucion": "Llanura tabasqueña",
+        "tipo_suelo": "Gleysol y fluvisol",
+        "clima": "Cálido húmedo",
+        "precipitacion_anual": "2000-4000 mm",
+        "altitud": "0-50 msnm"
+      },
+      "humanidades": {
+        "significado_cultural": "Símbolo de la identidad tabasqueña, presente en todo evento social",
+        "relevancia_social": "Cultura alimentaria y medicinal inseparable del ser tabasqueño",
+        "practicas_tradicionales": "Usada en 'tamales de mamé' para curar empacho en niños",
+        "saberes_indigenas": "Conocimiento chol sobre combinaciones medicinales con otras hierbas"
+      },
+      "imagenes": {
+        "principal": "assets/imagenes/hierba_tabasco.jpg",
+        "habitat": "assets/imagenes/hierba_habitat.jpg",
+        "detalle": "assets/imagenes/hierba_detalle.jpg"
+      },
+      "populares": true,
+      "mas_vendida": true,
+      "fecha_registro": "2024-05-12"
+    }
+  ]
+}
